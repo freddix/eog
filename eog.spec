@@ -1,11 +1,11 @@
 Summary:	The Eye of GNOME image viewer
 Name:		eog
-Version:	3.6.2
-Release:	2
+Version:	3.8.0
+Release:	1
 License:	GPL v2
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/gnome/sources/eog/3.6/%{name}-%{version}.tar.xz
-# Source0-md5:	da1c7011ba3c86f3fb9d6aca36048a45
+Source0:	http://ftp.gnome.org/pub/gnome/sources/eog/3.8/%{name}-%{version}.tar.xz
+# Source0-md5:	694e430680553b97475b7f6e3508a5d3
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
