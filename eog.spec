@@ -1,18 +1,18 @@
 Summary:	The Eye of GNOME image viewer
 Name:		eog
-Version:	3.8.2
+Version:	3.10.0
 Release:	1
 License:	GPL v2
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/gnome/sources/eog/3.8/%{name}-%{version}.tar.xz
-# Source0-md5:	84c48f8468b8cee09379091d11b553ca
+Source0:	http://ftp.gnome.org/pub/gnome/sources/eog/3.10/%{name}-%{version}.tar.xz
+# Source0-md5:	fea14d66c2fe9366ef4d6ef003fae6b7
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	dbus-glib-devel
 BuildRequires:	exempi-devel
 BuildRequires:	gettext-devel
-BuildRequires:	gnome-desktop-devel
+BuildRequires:	gnome-desktop-devel >= 3.10.0
 BuildRequires:	libpeas-gtk-devel
 BuildRequires:	gtk-doc
 BuildRequires:	intltool
@@ -50,7 +50,7 @@ Eye of the GNOME API documentation.
 %setup -q
 
 # kill gnome common deps
-sed -i -e 's/GNOME_COMPILE_WARNINGS.*//g'	\
+%{__sed} -i -e 's/GNOME_COMPILE_WARNINGS.*//g'	\
     -i -e 's/GNOME_MAINTAINER_MODE_DEFINES//g'	\
     -i -e 's/GNOME_COMMON_INIT//g'		\
     -i -e 's/GNOME_CXX_WARNINGS.*//g'		\
