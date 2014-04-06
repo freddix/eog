@@ -1,18 +1,18 @@
 Summary:	The Eye of GNOME image viewer
 Name:		eog
-Version:	3.10.2
-Release:	1
+Version:	3.12.0
+Release:	2
 License:	GPL v2
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/gnome/sources/eog/3.10/%{name}-%{version}.tar.xz
-# Source0-md5:	2805026e43e444b7006d9b2657a5b9ec
+Source0:	http://ftp.gnome.org/pub/gnome/sources/eog/3.12/%{name}-%{version}.tar.xz
+# Source0-md5:	dbd5951ab0336312e04a04497831882c
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	dbus-glib-devel
 BuildRequires:	exempi-devel
 BuildRequires:	gettext-devel
-BuildRequires:	gnome-desktop-devel >= 3.10.0
+BuildRequires:	gnome-desktop-devel >= 3.12.0
 BuildRequires:	libpeas-gtk-devel
 BuildRequires:	gtk-doc
 BuildRequires:	intltool
@@ -58,7 +58,6 @@ Eye of the GNOME API documentation.
 
 %build
 %{__gtkdocize}
-%{__gnome_doc_prepare}
 %{__libtoolize}
 %{__intltoolize}
 %{__aclocal}
@@ -77,21 +76,22 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-rm -r $RPM_BUILD_ROOT%{_datadir}/locale/{ca@valencia,en@shaw}
-rm -f $RPM_BUILD_ROOT%{_libdir}/eog/plugins/*.la
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/eog/plugins/*.la
+%{__rm} -r $RPM_BUILD_ROOT%{_datadir}/GConf
+%{__rm} -r $RPM_BUILD_ROOT%{_datadir}/locale/{ca@valencia,en@shaw}
 
-%find_lang %{name} --with-gnome --with-omf
+%find_lang %{name} --with-gnome
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %post
-%update_desktop_database_post
+%update_desktop_database
 %update_icon_cache hicolor
 %update_gsettings_cache
 
 %postun
-%update_desktop_database_postun
+%update_desktop_database
 %update_icon_cache hicolor
 %update_gsettings_cache
 
