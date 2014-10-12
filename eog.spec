@@ -1,18 +1,18 @@
 Summary:	The Eye of GNOME image viewer
 Name:		eog
-Version:	3.12.1
+Version:	3.14.0
 Release:	1
 License:	GPL v2
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/gnome/sources/eog/3.12/%{name}-%{version}.tar.xz
-# Source0-md5:	14ed287ec50039e494c3472075c77c2f
+Source0:	http://ftp.gnome.org/pub/gnome/sources/eog/3.14/%{name}-%{version}.tar.xz
+# Source0-md5:	8a05ba55231497901541e3e0d0ab8e43
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	dbus-glib-devel
 BuildRequires:	exempi-devel
 BuildRequires:	gettext-devel
-BuildRequires:	gnome-desktop-devel >= 3.12.0
+BuildRequires:	gnome-desktop-devel >= 3.14.0
 BuildRequires:	libpeas-gtk-devel
 BuildRequires:	gtk-doc
 BuildRequires:	intltool
@@ -76,9 +76,8 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-%{__rm} $RPM_BUILD_ROOT%{_libdir}/eog/plugins/*.la
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/eog/{,plugins}/*.la
 %{__rm} -r $RPM_BUILD_ROOT%{_datadir}/GConf
-%{__rm} -r $RPM_BUILD_ROOT%{_datadir}/locale/{ca@valencia,en@shaw}
 
 %find_lang %{name} --with-gnome
 
@@ -102,6 +101,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %dir %{_libdir}/eog
 %dir %{_libdir}/eog/plugins
+%attr(755,root,root) %{_libdir}/eog/libeog.so
 %attr(755,root,root) %{_libdir}/eog/plugins/*.so
 %{_libdir}/eog/plugins/*.plugin
 
